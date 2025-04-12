@@ -27,7 +27,7 @@ public class LoginController {
     public ResponseEntity<String> validarLogin(String usuario, String senha) {
         Optional<Usuario> usuarioOptional = usuarioService.validarUsuarioSenha(usuario, senha);
         if (usuarioOptional.isEmpty()){
-            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(MENSAGEM_ERRO);
+            return ResponseEntity.status(HttpStatus.NO_CONTENT).body(MENSAGEM_ERRO);
         }
 
         return ResponseEntity.status(HttpStatus.OK).body(MENSAGEM_SUCESSO);
