@@ -4,9 +4,8 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+import uninassau.ads._51.api.dto.UsuarioRequestDTO;
 import uninassau.ads._51.api.entity.Usuario;
 import uninassau.ads._51.api.services.UsuarioService;
 
@@ -14,8 +13,8 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@Tag(name = "LoginController", description = "Controller responsável por fazer validações de login")
-public class LoginController {
+@Tag(name = "LoginController", description = "Controller responsável por controlar as operaçoes de usuarios")
+public class UsuarioController {
 
     @Autowired
     private UsuarioService usuarioService;
@@ -23,6 +22,13 @@ public class LoginController {
     private static final String MENSAGEM_SUCESSO = "Usuario valido!";
     private static final String MENSAGEM_ERRO = "Usuário inexistente!";
 
+    @CrossOrigin(origins = "http://localhost:8081")
+    @RequestMapping(value = "/cadastro-usuario", method = RequestMethod.POST)
+    public void criarUsuarrio(@RequestBody UsuarioRequestDTO usuarioResquestDTO){
+        usuarioService.criarUsuario(usuarioResquestDTO);
+    }
+
+    @CrossOrigin(origins = "http://localhost:8081")
     @RequestMapping(value = "/validar-login", method = RequestMethod.GET)
     public ResponseEntity<String> validarLogin(String usuario, String senha) {
         Optional<Usuario> usuarioOptional = usuarioService.validarUsuarioSenha(usuario, senha);
@@ -31,7 +37,6 @@ public class LoginController {
         }
 
         return ResponseEntity.status(HttpStatus.OK).body(MENSAGEM_SUCESSO);
-
     }
 
     @RequestMapping(value = "/usuarios", method = RequestMethod.GET)

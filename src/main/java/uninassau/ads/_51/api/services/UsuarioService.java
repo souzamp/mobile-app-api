@@ -5,6 +5,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import uninassau.ads._51.api.UsuariosRepository;
+import uninassau.ads._51.api.dto.UsuarioRequestDTO;
 import uninassau.ads._51.api.entity.Usuario;
 
 import java.util.List;
@@ -14,6 +15,7 @@ import java.util.Optional;
 public class UsuarioService {
 
     private static final Logger log = LoggerFactory.getLogger(UsuarioService.class);
+
     @Autowired
     private UsuariosRepository usuariosRepository;
 
@@ -32,5 +34,11 @@ public class UsuarioService {
 
     public Optional<Usuario> validarUsuarioSenha(String usuario, String senha) {
         return usuariosRepository.findByUsuarioAndSenha(usuario, senha);
+    }
+
+    public void criarUsuario(UsuarioRequestDTO usuarioResquestDTO) {
+        Usuario usuario = new Usuario(usuarioResquestDTO.getUsuario() , usuarioResquestDTO.getSenha());
+
+        usuariosRepository.save(usuario);
     }
 }

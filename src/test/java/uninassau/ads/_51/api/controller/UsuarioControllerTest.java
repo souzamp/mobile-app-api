@@ -10,8 +10,8 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-@WebMvcTest(LoginController.class)
-class LoginControllerTest {
+@WebMvcTest(UsuarioController.class)
+class UsuarioControllerTest {
 
     @Autowired
     private MockMvc mockMvc;

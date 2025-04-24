@@ -14,6 +14,7 @@ public class Usuario implements Serializable {
     private Long id;
     @Column(name = "USUARIO", length = 30, nullable = false, unique = true)
     private String usuario;
+
     @Column(name = "SENHA", length = 6, nullable = false, unique = false)
     private String senha;
 
