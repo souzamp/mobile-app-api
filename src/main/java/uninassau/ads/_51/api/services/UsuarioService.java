@@ -4,7 +4,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import uninassau.ads._51.api.UsuariosRepository;
+import uninassau.ads._51.api.repository.UsuariosRepository;
 import uninassau.ads._51.api.dto.UsuarioRequestDTO;
 import uninassau.ads._51.api.entity.Usuario;
 

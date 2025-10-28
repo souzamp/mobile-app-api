@@ -24,6 +24,7 @@ public class UsuarioController {
 
     @CrossOrigin(origins = "http://localhost:8081")
     @RequestMapping(value = "/cadastro-usuario", method = RequestMethod.POST)
+    @ResponseStatus(HttpStatus.CREATED)
     public void criarUsuarrio(@RequestBody UsuarioRequestDTO usuarioResquestDTO){
         usuarioService.criarUsuario(usuarioResquestDTO);
     }

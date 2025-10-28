@@ -4,22 +4,22 @@ import jakarta.persistence.*;
 
 import java.io.Serializable;
 
-@Table(name = "usuario")
 @Entity
+@Table(name = "usuario")
 public class Usuario implements Serializable {
     private static final long serialVersionUID = -2420346134960559062L;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     @Column(name = "USUARIO", length = 30, nullable = false, unique = true)
     private String usuario;
 
     @Column(name = "SENHA", length = 6, nullable = false, unique = false)
     private String senha;
 
-    public Usuario() {
-    }
+    public Usuario() {}
 
     public Usuario(String usuario, String senha) {
         this.usuario = usuario;
